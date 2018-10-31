@@ -32,5 +32,6 @@ sudo docker service scale redis=10
 sudo docker service ls
 
 sudo docker stack deploy -c docker-compose.yml myswarm 
+sudo docker service ls
 
 
