@@ -1,0 +1,11 @@
+version: '3'
+services:
+      nginx:
+        image: nginx
+        deploy:
+          replicas: 2 
+        links:
+          - "tomcat"
+        ports:
+          - "8181:80"
+          - "443:443"

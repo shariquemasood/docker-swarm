@@ -1,0 +1,36 @@
+Note I am doing it locally for this you should have docker-machine install in your system to create vm
+
+Task----1
+
+1.On local-machine
+  sudo docker swarm init
+
+2. create a virtual machine for worker node
+   sudo docker-machine create --driver virtualbox worker1
+   sudo docker-machine create --driver virtualbox worker2
+   
+3. Login to worker machine
+  
+   docker-machine ssh worker1
+   docker-machine ssh worker2
+
+3. Join the worker1 and worker2 to manager node
+   
+   On worker1
+
+   docker swarm join --token SWMTKN-1-4pron40jeqtom05ogj4k09e31pfy8wmg6jak9cv9pglu45y96l-2md2wgadnvilo0di1vx85o2na 10.1.0.83:2377
+  
+   On worker2
+
+   docker swarm join --token SWMTKN-1-4pron40jeqtom05ogj4k09e31pfy8wmg6jak9cv9pglu45y96l-2md2wgadnvilo0di1vx85o2na 10.1.0.83:2377
+
+Task-------2
+
+sudo docker service create --replicas 3 --name redis --update-delay 10s redis:3.0.6
+sudo docker service update --image redis:3.0.7 redis
+sudo docker service scale redis=10
+sudo docker service ls
+
+sudo docker stack deploy -c docker-compose.yml myswarm 
+
+
