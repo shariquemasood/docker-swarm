@@ -1,3 +1,4 @@
-# docker-compose.yml
+# docker-swarm
 
-# sudo docker stack deploy -c docker-compose.yml myswarm
+# For running compose in stack mode  
+sudo docker stack deploy -c docker-compose.yml myswarm
